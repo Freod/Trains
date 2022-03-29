@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".BattleActivity">
+
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:id="@+id/enemyLoadingProgressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enemyShieldProgressBar" android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:id="@+id/playerLoadingProgressBar"
+            app:layout_constraintBottom_toTopOf="@+id/shotButton" android:layout_marginBottom="28dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <Button android:text="SHOT!"
+            android:layout_width="307dp"
+            android:layout_height="92dp" android:id="@+id/shotButton"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="40dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="24dp" app:layout_constraintHorizontal_bias="0.498"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:id="@+id/playerShieldProgressBar"
+            app:layout_constraintBottom_toTopOf="@+id/playerLoadingProgressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="12dp" app:layout_constraintEnd_toEndOf="parent"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:id="@+id/playerHealthPoolProgressBar"
+            app:layout_constraintBottom_toTopOf="@+id/playerShieldProgressBar" android:layout_marginBottom="12dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:id="@+id/enemyHealthPoolProgressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.505" android:indeterminate="false"
+            android:indeterminateTint="#FF0000"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="320dp"
+            android:layout_height="30dp"
+            android:id="@+id/enemyShieldProgressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enemyHealthPoolProgressBar" android:layout_marginTop="12dp"
+            app:layout_constraintHorizontal_bias="0.505"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

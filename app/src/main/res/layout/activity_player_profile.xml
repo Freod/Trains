@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".PlayerProfileActivity">
+
+	<ImageView
+			android:layout_width="291dp"
+			android:layout_height="268dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView"
+			app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="40dp"
+			app:srcCompat="@drawable/ic_launcher_background"/>
+	<Button
+			android:text="Battle"
+			android:layout_width="240dp"
+			android:layout_height="64dp" android:id="@+id/battleButton"
+			app:layout_constraintTop_toBottomOf="@+id/imageView"
+			android:layout_marginTop="40dp" app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
