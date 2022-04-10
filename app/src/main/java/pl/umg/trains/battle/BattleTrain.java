@@ -1,30 +1,30 @@
-package pl.umg.trains;
+package pl.umg.trains.battle;
 
 import android.widget.ProgressBar;
+import pl.umg.trains.Train;
 
 import java.util.logging.Logger;
 
 public class BattleTrain extends Train {
-    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private ProgressBar healthPoolProgressBar;
+    private ProgressBar shieldProgressBar;
+    private ProgressBar loadingProgressBar;
 
-    ProgressBar healthPoolProgressBar;
-    ProgressBar shieldProgressBar;
-    ProgressBar loadingProgressBar;
+    private double actualHealthPool;
+    private double actualShield;
+    private double actualLoading;
 
-    int id;
-    double actualHealthPool;
-    double actualShield;
-    double actualLoading;
-
-    public BattleTrain(int id, Train train, ProgressBar healthPoolProgressBar, ProgressBar shieldProgressBar, ProgressBar loadingProgressBar) {
+    public BattleTrain(Train train, ProgressBar healthPoolProgressBar, ProgressBar shieldProgressBar, ProgressBar loadingProgressBar) {
         super(train.getMaxHealthPool(), train.getMaxShield(), train.getArmour(), train.getAttackDamage(), train.getAttackSpeed(), train.getArmourPenetration());
-        this.id = id;
         this.healthPoolProgressBar = healthPoolProgressBar;
         this.shieldProgressBar = shieldProgressBar;
         this.loadingProgressBar = loadingProgressBar;
-        actualHealthPool = getMaxHealthPool();
-        actualShield = getMaxShield();
+        actualHealthPool = this.getMaxHealthPool();
+        actualShield = this.getMaxShield();
         actualLoading = 0;
+        healthPoolProgressBar.setProgress(progress(actualHealthPool, this.getMaxHealthPool()));
+        shieldProgressBar.setProgress(progress(actualShield, this.getMaxShield()));
+        loadingProgressBar.setProgress(0);
     }
 
     public double getActualHealthPool() {
@@ -43,41 +43,23 @@ public class BattleTrain extends Train {
         this.actualShield = actualShield;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     private int progress(double actual, int max) {
         return (int) Math.round((actual / max) * 100);
     }
 
-    public void start() {
-        healthPoolProgressBar.setProgress(progress(actualHealthPool, getMaxHealthPool()));
-        shieldProgressBar.setProgress(progress(actualShield, getMaxShield()));
-        loadingProgressBar.setProgress(0);
-    }
-
     public boolean load(){
-        boolean isShoting = false;
+        boolean shot = false;
         actualLoading+=getAttackSpeed();
         if(actualLoading>=100){
             actualLoading-=100;
-            isShoting = true;
+            shot = true;
         }
         updateLoadingProgressBar();
-        return isShoting;
+        return shot;
     }
 
     private void updateLoadingProgressBar(){
         loadingProgressBar.setProgress((int) actualLoading);
-    }
-
-    public double getOffence(){
-        return getAttackDamage();
     }
 
     public boolean getShot(double damage){

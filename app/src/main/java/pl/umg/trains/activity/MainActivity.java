@@ -1,7 +1,8 @@
-package pl.umg.trains;
+package pl.umg.trains.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import pl.umg.trains.R;
 
 public class MainActivity extends AppCompatActivity {
 

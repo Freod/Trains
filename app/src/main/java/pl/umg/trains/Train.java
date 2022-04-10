@@ -1,6 +1,10 @@
 package pl.umg.trains;
 
-public class Train {
+import android.widget.ProgressBar;
+
+import java.io.Serializable;
+
+public class Train implements Serializable{
     private int maxHealthPool;
     private int maxShield;
     private double armour;

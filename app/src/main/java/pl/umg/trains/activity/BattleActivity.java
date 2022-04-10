@@ -1,9 +1,12 @@
-package pl.umg.trains;
+package pl.umg.trains.activity;
 
 import android.view.View;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import pl.umg.trains.battle.BattleTrain;
+import pl.umg.trains.R;
+import pl.umg.trains.Train;
 import pl.umg.trains.battle.Battle;
 
 public class BattleActivity extends AppCompatActivity {
@@ -13,6 +16,8 @@ public class BattleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
 
+        Train playerTrain = (Train) getIntent().getSerializableExtra("train");
+
         ProgressBar playerHealthPoolProgressBar = findViewById(R.id.playerHealthPoolProgressBar);
         ProgressBar playerShieldProgressBar = findViewById(R.id.playerShieldProgressBar);
         ProgressBar playerLoadingProgressBar = findViewById(R.id.playerLoadingProgressBar);
@@ -21,15 +26,15 @@ public class BattleActivity extends AppCompatActivity {
         ProgressBar enemyShieldProgressBar = findViewById(R.id.enemyShieldProgressBar);
         ProgressBar enemyLoadingProgressBar = findViewById(R.id.enemyLoadingProgressBar);
 
-        BattleTrain playerTrain = new BattleTrain(PlayerStore.player.getId(), PlayerStore.player.getChosenTrain(), playerHealthPoolProgressBar, playerShieldProgressBar, playerLoadingProgressBar);
-        BattleTrain enemyTrain = new BattleTrain(0, PlayerStore.player.getChosenTrain(), enemyHealthPoolProgressBar, enemyShieldProgressBar, enemyLoadingProgressBar);
+        BattleTrain playerBattleTrain = new BattleTrain(playerTrain, playerHealthPoolProgressBar, playerShieldProgressBar, playerLoadingProgressBar);
+        BattleTrain enemyBattleTrain = new BattleTrain(playerTrain, enemyHealthPoolProgressBar, enemyShieldProgressBar, enemyLoadingProgressBar);
 
-        final Battle battle = new Battle(playerTrain, enemyTrain);
+        Battle battle = new Battle(playerBattleTrain, enemyBattleTrain);
         battle.start();
 
         findViewById(R.id.shotButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                battle.load(PlayerStore.player.getId());
+                battle.load(true);
             }
         });
     }

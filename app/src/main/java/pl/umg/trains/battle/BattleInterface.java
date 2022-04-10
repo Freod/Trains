@@ -3,7 +3,7 @@ package pl.umg.trains.battle;
 public interface BattleInterface {
     void start();
 
-    void load(int id);
+    void load(boolean playerTurn);
 
-    void end(boolean whoWin);
+    void gameOver(boolean playerWin);
 }

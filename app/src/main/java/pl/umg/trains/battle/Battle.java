@@ -1,14 +1,11 @@
 package pl.umg.trains.battle;
 
-import pl.umg.trains.BattleTrain;
-
-import java.util.logging.Logger;
+import android.os.CountDownTimer;
 
 public class Battle implements BattleInterface {
-    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
     private BattleTrain playerTrain;
     private BattleTrain enemyTrain;
+    private CountDownTimer timer;
 
     public Battle(BattleTrain playerTrain, BattleTrain enemyTrain) {
         this.playerTrain = playerTrain;
@@ -17,35 +14,48 @@ public class Battle implements BattleInterface {
 
     @Override
     public void start() {
-        playerTrain.start();
-        enemyTrain.start();
-        logger.info("start");
+        botAI();
+    }
+
+    private void botAI() {
+        timer = new CountDownTimer(1000, 200) {
+            @Override
+            public void onTick(long l) {
+                load(false);
+            }
+
+            @Override
+            public void onFinish() {
+                botAI();
+            }
+        }.start();
+
     }
 
     @Override
-    public void load(int id) {
-        if(id == playerTrain.getId()){
-            if(playerTrain.load()){
-                if(enemyTrain.getShot(playerTrain.getOffence()))
-                    end(true);
+    public void load(boolean playerTurn) {
+        if (playerTurn) {
+            if (playerTrain.load()) {
+                if (enemyTrain.getShot(playerTrain.getAttackDamage())) {
+                    gameOver(true);
+                }
             }
-        }
-        else {
-            if(enemyTrain.load()){
-                if(playerTrain.getShot(enemyTrain.getOffence()))
-                    end(false);
+        } else {
+            if (enemyTrain.load()) {
+                if (playerTrain.getShot(enemyTrain.getAttackDamage())) {
+                    gameOver(false);
+                }
             }
         }
     }
 
-
     @Override
-    public void end(boolean whoWin) {
-        if(whoWin){
-            logger.info("player WIN");
+    public void gameOver(boolean playerWin) {
+        if (playerWin) {
+//            Toast.makeText(, "You win", Toast.LENGTH_LONG).show();
+        } else {
+//            Toast.makeText(, "You lose", Toast.LENGTH_LONG).show();
         }
-        else {
-            logger.info("BOT WIN");
-        }
+        timer.cancel();
     }
 }

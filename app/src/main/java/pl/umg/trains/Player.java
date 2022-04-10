@@ -1,38 +1,44 @@
 package pl.umg.trains;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Player {
-    private int id;
-    private String name;
+public class Player implements Serializable {
+    private long id;
+    private String nickname;
+    private int money;
     private List<Train> playerTrains;
-    private Train chosenTrain;
 
-    public Player(String name) {
-        this.id = 1;
-        this.name = name;
+    public Player() {
     }
 
-    public Player(int id, String name, Train chosenTrain) {
+    public Player(Long id, String name) {
         this.id = id;
-        this.name = name;
-        this.chosenTrain = chosenTrain;
+        this.nickname = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public List<Train> getPlayerTrains() {
@@ -41,13 +47,5 @@ public class Player {
 
     public void setPlayerTrains(List<Train> playerTrains) {
         this.playerTrains = playerTrains;
-    }
-
-    public Train getChosenTrain() {
-        return chosenTrain;
-    }
-
-    public void setChosenTrain(Train chosenTrain) {
-        this.chosenTrain = chosenTrain;
     }
 }

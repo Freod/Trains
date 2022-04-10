@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".BattleActivity">
+        tools:context=".activity.BattleActivity">
 
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
@@ -14,14 +14,15 @@
             android:id="@+id/enemyLoadingProgressBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enemyShieldProgressBar" android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" android:progressTint="#FFC107"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="320dp"
             android:layout_height="30dp"
             android:id="@+id/playerLoadingProgressBar"
             app:layout_constraintBottom_toTopOf="@+id/shotButton" android:layout_marginBottom="28dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:progressTint="#FFC107"/>
     <Button android:text="SHOT!"
             android:layout_width="307dp"
             android:layout_height="92dp" android:id="@+id/shotButton"
@@ -42,14 +43,16 @@
             android:id="@+id/playerShieldProgressBar"
             app:layout_constraintBottom_toTopOf="@+id/playerLoadingProgressBar"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="12dp" app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginBottom="12dp" app:layout_constraintEnd_toEndOf="parent"
+            android:progressTint="#00BCD4"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="320dp"
             android:layout_height="30dp"
             android:id="@+id/playerHealthPoolProgressBar"
             app:layout_constraintBottom_toTopOf="@+id/playerShieldProgressBar" android:layout_marginBottom="12dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:progressTint="#FF0000"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="320dp"
@@ -58,7 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView"
             android:layout_marginTop="12dp" app:layout_constraintHorizontal_bias="0.505" android:indeterminate="false"
-            android:indeterminateTint="#FF0000"/>
+            android:progressTint="#FF0000"/>
     <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="320dp"
@@ -67,5 +70,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enemyHealthPoolProgressBar" android:layout_marginTop="12dp"
-            app:layout_constraintHorizontal_bias="0.505"/>
+            app:layout_constraintHorizontal_bias="0.505" android:progressTint="#00BCD4"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
